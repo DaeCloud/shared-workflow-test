@@ -19,6 +19,7 @@ on:
 jobs:
   build:
     uses: DaeCloud/.github/.github/workflows/docker-image-ci.yml@main
+    secrets: inherit
     with:
-      version_type: ${{ inputs.version_type }}
-      image_name: ${{ inputs.image_name }}
+      version_type: ${{ github.event.inputs.version_type }}
+      image_name: ${{ github.event.inputs.image_name }}
