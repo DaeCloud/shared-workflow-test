@@ -1,0 +1,24 @@
+name: Build Docker
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_type:
+        description: "Select the type of version update"
+        required: true
+        type: choice
+        options:
+          - PATCH
+          - MINOR
+          - MAJOR
+      image_name:
+        description: "Override image name"
+        required: false
+        type: string
+
+jobs:
+  build:
+    uses: DaeCloud/.github/.github/workflows/docker-image-ci.yml@main
+    with:
+      version_type: ${{ inputs.version_type }}
+      image_name: ${{ inputs.image_name }}
