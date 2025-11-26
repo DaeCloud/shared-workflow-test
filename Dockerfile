@@ -1,1 +1,2 @@
-FROM node:18-slim
+FROM alpine:3.20
+CMD ["sh"]
